@@ -1,5 +1,5 @@
 import { env } from 'process';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 // eslint-disable-next-line import/prefer-default-export
 export class DBClient {
@@ -41,6 +41,16 @@ export class DBClient {
     const myDB = this.myClient.db();
     const myCollection = myDB.collection('users');
     return myCollection.insertOne({ email, passwordHash });
+  }
+
+  async filterUser(filters) {
+    const myDB = this.myClient.db();
+    const myCollection = myDB.collection('users');
+    if ('_id' in filters) {
+      // eslint-disable-next-line no-param-reassign
+      filters._id = ObjectId(filters._id);
+    }
+    return myCollection.findOne(filters);
   }
 }
 
