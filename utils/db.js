@@ -28,6 +28,20 @@ export class DBClient {
     const myCollection = myDB.collection('files');
     return myCollection.countDocuments();
   }
+
+  async userExists(email) {
+    /* returns true if the user with the given email exists */
+    const myDB = this.myClient.db();
+    const myCollection = myDB.collection('users');
+    return myCollection.findOne({ email });
+  }
+
+  async newUser(email, passwordHash) {
+    /* creates a new user with the given email and passwordHash */
+    const myDB = this.myClient.db();
+    const myCollection = myDB.collection('users');
+    return myCollection.insertOne({ email, passwordHash });
+  }
 }
 
 const dbClient = new DBClient();
