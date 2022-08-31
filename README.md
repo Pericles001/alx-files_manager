@@ -1,7 +1,7 @@
 0x04. Files manager
 ===================
 
-Back-endJavaScriptES6NoSQLMongoDBRedisNodeJSExpressJSKue
+Back-end JavaScript ES6 NoSQL MongoDB Redis NodeJS ExpressJS Kue
 
 -   By: Guillaume, CTO at Holberton School
 -   Weight: 1
